@@ -1088,9 +1088,9 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1147261247580534}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 02f6640121d07294586a1d897f6b5b2e, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a24d58497a5bd4047a30d965d3dd9189, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1125,6 +1125,7 @@ MonoBehaviour:
   invincibilityTimer: 2.5
   timeToCharge: 2
   basePowerRate: 1
+  rotationTreshold: 0.01
   playerRenderer: {fileID: 137026337927453886}
   currentPower: 0
 --- !u!137 &137026337927453886
