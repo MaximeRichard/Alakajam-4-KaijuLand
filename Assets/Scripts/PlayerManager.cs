@@ -36,6 +36,8 @@ public class PlayerManager : MonoBehaviour {
     public int basePowerRate = 1;
     public float rotationTreshold = 0.01f;
     public Renderer playerRenderer;
+    public float gravityMultiply = 1.2f;
+    public float maxVelocity = 100f;
 
     private Rigidbody2D rb;
     private bool isTouched,isFacingRight;
@@ -110,13 +112,13 @@ public class PlayerManager : MonoBehaviour {
 
         if (Input.GetKey(KeyCode.Space))
         {
-            rb.gravityScale = cachedGravityScale * 1.2f;
+            rb.gravityScale = cachedGravityScale * gravityMultiply;
         }
         else if (Input.GetKeyUp(KeyCode.Space)) {
             rb.gravityScale = cachedGravityScale;
             chargeTimeCounter = 0;
         }
-        rb.velocity = Vector2.ClampMagnitude(rb.velocity, maxSpeed);
+        rb.velocity = Vector2.ClampMagnitude(rb.velocity, maxVelocity);
     }
 
     void Update()
