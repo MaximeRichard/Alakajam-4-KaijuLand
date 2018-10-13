@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -13,13 +14,25 @@ public class GameManager : MonoBehaviour
     public CameraFollow2D cameraTracker;
     public Transform origin;
 
+    public int patternsBeforeEnd = 15;
+    public int powerObjective;
+
+    public Text powerValue;
+    public Slider advancement;
+
+
     private Rigidbody2D playerRigid;
+    private PlayerManager playerMgr;
+
+    
 
     public float distToSpawnNext = 2f;
     public float distBeforeDestroy = 10f;
     private float currentDistTravelled = 0f;
     private float currentDistToSpawnNext;
     public float scrollFactor = 1f;
+
+
 
     public float playerVelocity;
 
@@ -45,6 +58,7 @@ public class GameManager : MonoBehaviour
         sPoint.transform.position = origin.position;
         GameObject player = Instantiate(playerPrefab);
         playerRigid = player.GetComponent<Rigidbody2D>();
+        playerMgr = player.GetComponent<PlayerManager>();
         player.transform.position = GameObject.FindGameObjectWithTag("PlayerSpawnPoint").transform.position;
         cameraTracker.target = player.transform;
         spawnedPatterns.Enqueue(sPoint.GetComponent<TemplateManager>());
@@ -79,6 +93,8 @@ public class GameManager : MonoBehaviour
             float distThisFrame = playerRigid.velocity.y * Time.deltaTime;
             currentDistTravelled -= distThisFrame;
         }
+
+        advancement.value = (origin.position.y - playerMgr.transform.position.y) / (patternsBeforeEnd * 20f);
 
     }
 
