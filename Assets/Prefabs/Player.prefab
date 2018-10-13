@@ -161,9 +161,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96a661c7a2a5665458b4d86a1cac4cd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 6
-  life: 3
-  invincibilityTimer: 2.5
   jumpForce: 12
   jumpTime: 0.01
   grounded: 1
@@ -173,3 +170,9 @@ MonoBehaviour:
   stoppedJumping: 1
   groundCheck: {fileID: 4000845676782186}
   groundCheckRadius: 0.1
+  speed: 6
+  life: 3
+  invincibilityTimer: 2.5
+  timeToCharge: 2
+  basePowerRate: 1
+  currentPower: 0
