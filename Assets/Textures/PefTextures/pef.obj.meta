@@ -1,50 +1,21 @@
 fileFormatVersion: 2
-guid: 846c2f93a0059804caf0cd119194a871
+guid: f5854029e11d14a4f916b1c56893aed1
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: head
-    100002: headEnd
-    100004: l_arm
-    100006: l_ear
-    100008: l_ear2
-    100010: l_earEnd
-    100012: l_hand
-    100014: l_leg01
-    100016: l_toe01
-    100018: //RootNode
-    100020: r_arm
-    100022: r_ear
-    100024: r_ear2
-    100026: r_earEnd
-    100028: r_hand
-    100030: r_leg01
-    100032: r_toe01
-    100034: root
-    100036: spineA
-    100038: spineB
-    400000: head
-    400002: headEnd
-    400004: l_arm
-    400006: l_ear
-    400008: l_ear2
-    400010: l_earEnd
-    400012: l_hand
-    400014: l_leg01
-    400016: l_toe01
-    400018: //RootNode
-    400020: r_arm
-    400022: r_ear
-    400024: r_ear2
-    400026: r_earEnd
-    400028: r_hand
-    400030: r_leg01
-    400032: r_toe01
-    400034: root
-    400036: spineA
-    400038: spineB
-    7400000: Take 001
-    9500000: //RootNode
+    100000: Pef
+    100002: //RootNode
+    100004: textureEditorIsolateSelectSet_Pef
+    400000: Pef
+    400002: //RootNode
+    400004: textureEditorIsolateSelectSet_Pef
+    2100000: initialShadingGroup
+    2300000: Pef
+    2300002: textureEditorIsolateSelectSet_Pef
+    3300000: Pef
+    3300002: textureEditorIsolateSelectSet_Pef
+    4300000: Pef
+    4300002: textureEditorIsolateSelectSet_Pef
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -95,9 +66,9 @@ ModelImporter:
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
-    useFileScale: 0
-    previousCalculatedGlobalScale: 0.01
-    hasPreviousCalculatedGlobalScale: 1
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
@@ -122,7 +93,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 0
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
