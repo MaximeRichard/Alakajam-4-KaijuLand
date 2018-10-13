@@ -8,7 +8,7 @@ public class PlayerManager : MonoBehaviour {
     public int life = 3;
     public float invincibilityTimer;
 
-    private Rigidbody rb;
+    private Rigidbody2D rb;
     private bool isTouched;
     private Color playerRendererColor;
     /*these floats are the force you use to jump, the max time you want your jump to be allowed to happen,
@@ -35,7 +35,7 @@ public class PlayerManager : MonoBehaviour {
 
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody2D>();
         playerRendererColor = gameObject.GetComponent<Renderer>().material.color;
         //sets the jumpCounter to whatever we set our jumptime to in the editor
         jumpTimeCounter = jumpTime;
@@ -95,18 +95,17 @@ public class PlayerManager : MonoBehaviour {
         //***************Input Jump Processing*******************//
 
         //determines whether our bool, grounded, is true or false by seeing if our groundcheck overlaps something on the ground layer
-        Physics.OverlapSphere(groundCheck.position, groundCheckRadius, whatIsGround);
+
+
+        //determines whether our bool, grounded, is true or false by seeing if our groundcheck overlaps something on the ground layer
+        grounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, whatIsGround);
+
 
         //if we are grounded...
-        if (Physics.OverlapSphere(groundCheck.position, groundCheckRadius, whatIsGround).Length > 0)
+        if (grounded)
         {
-            grounded = true;
             //the jumpcounter is whatever we set jumptime to in the editor.
             jumpTimeCounter = jumpTime;
-        }
-        else
-        {
-            grounded = false;
         }
     }
 
