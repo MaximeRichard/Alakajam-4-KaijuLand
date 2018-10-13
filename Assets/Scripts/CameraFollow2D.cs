@@ -14,7 +14,7 @@ public class CameraFollow2D : MonoBehaviour
 
 
     private void FixedUpdate()
-    {
+    {        
         float posY = Mathf.Lerp(transform.position.y, target.position.y + offsetY, smoothFactor);
         float diff = target.position.y - posY;
         if (diff < -maxDistance)
