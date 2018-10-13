@@ -10,6 +10,7 @@ public class CameraFollow2D : MonoBehaviour
     public float offsetY = 1;
     public float maxDistance = 2;
     public float smoothFactor = 0.25f;
+    public Vector3 previousPos;
 
 
     private void FixedUpdate()
