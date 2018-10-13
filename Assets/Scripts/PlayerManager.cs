@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -33,9 +34,11 @@ public class PlayerManager : MonoBehaviour {
     public float invincibilityTimer;
     public float timeToCharge;
     public float basePowerRate = 1f;
+    public float rotationTreshold = 0.01f;
+    public Renderer playerRenderer;
 
     private Rigidbody2D rb;
-    private bool isTouched;
+    private bool isTouched,isFacingRight;
     private Color playerRendererColor;
     private float chargeTimeCounter;
     private float cachedGravityScale;
@@ -54,12 +57,13 @@ public class PlayerManager : MonoBehaviour {
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        playerRendererColor = gameObject.GetComponent<Renderer>().material.color;
+        playerRendererColor = playerRenderer.material.color;
         //sets the jumpCounter to whatever we set our jumptime to in the editor
         jumpTimeCounter = jumpTime;
         isTouched = false;
         cachedGravityScale = rb.gravityScale;
         chargeTimeCounter = 0f;
+        isFacingRight = true;
     }
 
     void FixedUpdate()
@@ -108,7 +112,6 @@ public class PlayerManager : MonoBehaviour {
             chargeTimeCounter = 0;
         }
         rb.velocity = Vector2.ClampMagnitude(rb.velocity, maxSpeed);
-        Debug.Log(rb.velocity);
     }
 
     void Update()
@@ -117,8 +120,22 @@ public class PlayerManager : MonoBehaviour {
         //***************Input Movement Left Right****************//
 
         float moveHorizontal = Input.GetAxis("Horizontal");
-
-        Vector3 movement = new Vector3(moveHorizontal, 0.0f);
+        
+        if (moveHorizontal > 0 && !isFacingRight)
+        {
+            GetComponent<Animator>().SetBool("Moving", true);
+            Debug.Log("Rotate Right " + isFacingRight);
+            FlipCharacter(true);
+        }
+        else if (moveHorizontal < 0 && isFacingRight)
+        {
+            GetComponent<Animator>().SetBool("Moving", true);
+            Debug.Log("Rotate Left");
+            FlipCharacter(false);
+        }
+        else if (moveHorizontal == 0) GetComponent<Animator>().SetBool("Moving", false);
+        if (!isFacingRight) moveHorizontal = -moveHorizontal;
+        Vector3 movement = new Vector3(0.0f, 0.0f, moveHorizontal);
 
         // Move the object forward along its z axis 1 unit/second.
         transform.Translate(movement * Time.deltaTime * speed);
@@ -149,6 +166,19 @@ public class PlayerManager : MonoBehaviour {
         }
     }
 
+    private void FlipCharacter(bool v)
+    {
+        isFacingRight = v;
+        if (isFacingRight)
+        {
+            transform.RotateAround(transform.position, Vector3.up, 180f);
+        }
+        else
+        {
+            transform.RotateAround(transform.position, Vector3.up, -180f);
+        }
+    }
+
     void TakeDamage()
     {
         life--;
@@ -156,7 +186,7 @@ public class PlayerManager : MonoBehaviour {
         {
             
             playerRendererColor.a = 0.5f;
-            gameObject.GetComponent<Renderer>().material.color = playerRendererColor;
+            playerRenderer.material.color = playerRendererColor;
             StartCoroutine(InvincibilityCooldown());
         }
         //TODO Implement invincibility cooldown
@@ -171,7 +201,7 @@ public class PlayerManager : MonoBehaviour {
     {
         yield return new WaitForSeconds(invincibilityTimer);
         playerRendererColor.a = 1f;
-        gameObject.GetComponent<Renderer>().material.color = playerRendererColor;
+        playerRenderer.material.color = playerRendererColor;
         isTouched = false;
     }
 
