@@ -8,6 +8,6 @@ public class TemplateEndTrigger : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        TemplateManager.OnEnd();
+        template.OnEnd();
     }
 }

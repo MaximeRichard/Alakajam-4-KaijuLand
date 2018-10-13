@@ -4,7 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class TemplateManager : MonoBehaviour {
-    internal static void OnEnd()
+
+    internal void OnEnd()
     {
         GameManager.Instance.OnTemplateEnd(this);
     }
