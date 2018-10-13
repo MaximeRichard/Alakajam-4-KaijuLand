@@ -108,7 +108,6 @@ public class PlayerManager : MonoBehaviour {
             chargeTimeCounter = 0;
         }
         rb.velocity = Vector2.ClampMagnitude(rb.velocity, maxSpeed);
-        Debug.Log(rb.velocity);
     }
 
     void Update()
