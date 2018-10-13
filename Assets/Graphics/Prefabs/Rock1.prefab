@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4528588568851804}
   - component: {fileID: 33044074730077856}
   - component: {fileID: 23470280294306244}
-  - component: {fileID: 68488548237695340}
+  - component: {fileID: 60281875308622730}
   m_Layer: 9
   m_Name: Rock1
   m_TagString: Untagged
@@ -84,8 +84,8 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1806992428203024}
   m_Mesh: {fileID: 4300000, guid: 4079cc803dee19243b08208e824d71c0, type: 3}
---- !u!68 &68488548237695340
-EdgeCollider2D:
+--- !u!60 &60281875308622730
+PolygonCollider2D:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -97,22 +97,24 @@ EdgeCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_EdgeRadius: 0
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   m_Points:
-  - {x: 0.24756987, y: -1.0102699}
-  - {x: -0.41580886, y: -1.2292464}
-  - {x: -1.1056653, y: -1.2244754}
-  - {x: -1.5903438, y: -1.0178701}
-  - {x: -1.5915184, y: -0.75377697}
-  - {x: -1.8166412, y: -0.61779207}
-  - {x: -1.5586371, y: -0.47588396}
-  - {x: -1.7755454, y: -0.2650209}
-  - {x: -2.4401572, y: -0.0036671758}
-  - {x: 2.4419293, y: 0.005581796}
-  - {x: 2.2082748, y: -0.2906631}
-  - {x: 1.9836487, y: -0.48809415}
-  - {x: 2.116004, y: -0.62941384}
-  - {x: 1.8637644, y: -0.77515376}
-  - {x: 1.9216661, y: -0.8868072}
-  - {x: 1.6005877, y: -1.0033727}
-  - {x: 0.24269298, y: -1.0050542}
+    m_Paths:
+    - - {x: 0.0021020025, y: 0.005499174}
+      - {x: -2.433781, y: 0.01362151}
+      - {x: -1.590758, y: -0.44899476}
+      - {x: -1.563028, y: -0.9941831}
+      - {x: -1.1194327, y: -1.216844}
+      - {x: -0.40326294, y: -1.2411597}
+      - {x: 0.24481285, y: -1.0118408}
+      - {x: 1.6794758, y: -1.0118405}
+      - {x: 2.100204, y: -0.66527086}
+      - {x: 2.4337811, y: 0.013621883}

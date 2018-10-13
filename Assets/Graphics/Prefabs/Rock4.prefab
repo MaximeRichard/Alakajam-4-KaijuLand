@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4387154626152016}
   - component: {fileID: 33300154938725814}
   - component: {fileID: 23218623336727874}
-  - component: {fileID: 68012259863849286}
+  - component: {fileID: 60293079859602032}
   m_Layer: 9
   m_Name: Rock4
   m_TagString: Untagged
@@ -84,8 +84,8 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1708754827492684}
   m_Mesh: {fileID: 4300000, guid: a36568a9bf1f9474d831f16991244cca, type: 3}
---- !u!68 &68012259863849286
-EdgeCollider2D:
+--- !u!60 &60293079859602032
+PolygonCollider2D:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -97,14 +97,19 @@ EdgeCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_EdgeRadius: 0
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   m_Points:
-  - {x: 0.23334831, y: -0.88481826}
-  - {x: -1.5419347, y: -0.53064495}
-  - {x: -1.7905912, y: -0.43126902}
-  - {x: -2.0212793, y: 0.011062585}
-  - {x: 2.0257356, y: 0.009768233}
-  - {x: 1.8785219, y: -0.33513913}
-  - {x: 1.570781, y: -0.5970453}
-  - {x: 0.96968806, y: -0.69890547}
-  - {x: 0.23110393, y: -0.88496375}
+    m_Paths:
+    - - {x: 2.0341752, y: 0.033650793}
+      - {x: -2.0290823, y: 0.024795633}
+      - {x: -1.796062, y: -0.42698926}
+      - {x: 0.22228083, y: -0.8885952}
+      - {x: 1.5761911, y: -0.6199994}
