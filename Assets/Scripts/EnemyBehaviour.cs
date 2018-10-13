@@ -10,6 +10,7 @@ public class EnemyBehaviour : MonoBehaviour {
     private bool isRight,endOfPlatform;
     private Vector3 movement;
     private Transform currentCheck;
+    
     // Use this for initialization
     void Start () {
         isRight = true;

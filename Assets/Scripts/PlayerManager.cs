@@ -4,13 +4,7 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour {
 
-    public float speed;
-    public int life = 3;
-    public float invincibilityTimer;
-
-    private Rigidbody2D rb;
-    private bool isTouched;
-    private Color playerRendererColor;
+    //****** Jump Parameters ******//
     /*these floats are the force you use to jump, the max time you want your jump to be allowed to happen,
      * and a counter to track how long you have been jumping*/
     public float jumpForce;
@@ -31,7 +25,31 @@ public class PlayerManager : MonoBehaviour {
     public Transform groundCheck;
     public float groundCheckRadius;
 
+    //********** Other **********//
 
+    public float speed;
+    public float maxSpeed = 100f;
+    public int life = 3;
+    public float invincibilityTimer;
+    public float timeToCharge;
+    public float basePowerRate = 1f;
+
+    private Rigidbody2D rb;
+    private bool isTouched;
+    private Color playerRendererColor;
+    private float chargeTimeCounter;
+    private float cachedGravityScale;
+
+    [SerializeField]
+    private float currentPower;
+
+    public float CurrentPower
+    {
+        get
+        {
+            return currentPower;
+        }
+    }
 
     void Start()
     {
@@ -40,6 +58,8 @@ public class PlayerManager : MonoBehaviour {
         //sets the jumpCounter to whatever we set our jumptime to in the editor
         jumpTimeCounter = jumpTime;
         isTouched = false;
+        cachedGravityScale = rb.gravityScale;
+        chargeTimeCounter = 0f;
     }
 
     void FixedUpdate()
@@ -78,6 +98,17 @@ public class PlayerManager : MonoBehaviour {
             jumpTimeCounter = 0;
             stoppedJumping = true;
         }
+
+        if (Input.GetKey(KeyCode.Space))
+        {
+            rb.gravityScale = cachedGravityScale * 1.2f;
+        }
+        else if (Input.GetKeyUp(KeyCode.Space)) {
+            rb.gravityScale = cachedGravityScale;
+            chargeTimeCounter = 0;
+        }
+        rb.velocity = Vector2.ClampMagnitude(rb.velocity, maxSpeed);
+        Debug.Log(rb.velocity);
     }
 
     void Update()
@@ -100,11 +131,20 @@ public class PlayerManager : MonoBehaviour {
         //determines whether our bool, grounded, is true or false by seeing if our groundcheck overlaps something on the ground layer
         grounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, whatIsGround);
 
+        if (Input.GetKey(KeyCode.Space))
+        {
+            chargeTimeCounter += Time.deltaTime;
+            if(chargeTimeCounter > timeToCharge)
+            {
+                currentPower += basePowerRate;
+            }
+        }
 
-        //if we are grounded...
-        if (grounded)
+            //if we are grounded...
+            if (grounded)
         {
             //the jumpcounter is whatever we set jumptime to in the editor.
+            chargeTimeCounter = 0f;
             jumpTimeCounter = jumpTime;
         }
     }
