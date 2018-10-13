@@ -1,50 +1,26 @@
 fileFormatVersion: 2
-guid: 846c2f93a0059804caf0cd119194a871
+guid: f7c96b5cc6db7a94da1e1b0195ca8f0d
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: head
-    100002: headEnd
-    100004: l_arm
-    100006: l_ear
-    100008: l_ear2
-    100010: l_earEnd
-    100012: l_hand
-    100014: l_leg01
-    100016: l_toe01
-    100018: //RootNode
-    100020: r_arm
-    100022: r_ear
-    100024: r_ear2
-    100026: r_earEnd
-    100028: r_hand
-    100030: r_leg01
-    100032: r_toe01
-    100034: root
-    100036: spineA
-    100038: spineB
-    400000: head
-    400002: headEnd
-    400004: l_arm
-    400006: l_ear
-    400008: l_ear2
-    400010: l_earEnd
-    400012: l_hand
-    400014: l_leg01
-    400016: l_toe01
-    400018: //RootNode
-    400020: r_arm
-    400022: r_ear
-    400024: r_ear2
-    400026: r_earEnd
-    400028: r_hand
-    400030: r_leg01
-    400032: r_toe01
-    400034: root
-    400036: spineA
-    400038: spineB
-    7400000: Take 001
-    9500000: //RootNode
+    100000: //RootNode
+    100002: "PlancheNONCass\xE91"
+    100004: "PlancheNONCass\xE92"
+    100006: "PlancheNONCass\xE93"
+    400000: //RootNode
+    400002: "PlancheNONCass\xE91"
+    400004: "PlancheNONCass\xE92"
+    400006: "PlancheNONCass\xE93"
+    2100000: lambert1
+    2300000: "PlancheNONCass\xE91"
+    2300002: "PlancheNONCass\xE92"
+    2300004: "PlancheNONCass\xE93"
+    3300000: "PlancheNONCass\xE91"
+    3300002: "PlancheNONCass\xE92"
+    3300004: "PlancheNONCass\xE93"
+    4300000: "PlancheNONCass\xE91"
+    4300002: "PlancheNONCass\xE93"
+    4300004: "PlancheNONCass\xE92"
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -72,39 +48,11 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations:
-    - serializedVersion: 16
-      name: Take 001
-      takeName: Take 001
-      firstFrame: 1
-      lastFrame: 20
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 1
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
+    clipAnimations: []
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: 0.6
     meshCompression: 0
     addColliders: 0
     importVisibility: 1
@@ -124,8 +72,8 @@ ModelImporter:
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
     useFileScale: 0
-    previousCalculatedGlobalScale: 0.7
-    hasPreviousCalculatedGlobalScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
@@ -150,7 +98,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 0
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
