@@ -6,6 +6,7 @@ public class EnemyBehaviour : MonoBehaviour {
     public float speed, edgeCheckRadius;
     public Transform leftCheck, rightCheck;
     public LayerMask platformMask;
+    public int powerBonus = 10;
 
     private bool isRight,endOfPlatform;
     private Vector3 movement;
@@ -44,6 +45,19 @@ public class EnemyBehaviour : MonoBehaviour {
             isRight = true;
             movement = Vector3.right;
             currentCheck = rightCheck;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.Log(collision.gameObject.tag);
+        if(collision.gameObject.tag == "Player")
+        {
+
+            //TODO add force to blow back player
+            //collision.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up * 200);
+            collision.gameObject.GetComponent<PlayerManager>().AddPower(powerBonus);
+            Destroy(gameObject);
         }
     }
 }
