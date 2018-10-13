@@ -166,8 +166,8 @@ public class PlayerManager : MonoBehaviour {
             //the jumpcounter is whatever we set jumptime to in the editor.
             chargeTimeCounter = 0f;
             jumpTimeCounter = jumpTime;
-            animator.SetTrigger("GroundTouch");
         }
+        animator.SetBool("Grounded", grounded);
     }
 
     private void FlipCharacter(bool v)
