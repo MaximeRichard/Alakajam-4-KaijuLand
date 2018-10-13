@@ -33,7 +33,7 @@ public class PlayerManager : MonoBehaviour {
     public int life = 3;
     public float invincibilityTimer;
     public float timeToCharge;
-    public float basePowerRate = 1f;
+    public int basePowerRate = 1;
     public float rotationTreshold = 0.01f;
     public Renderer playerRenderer;
 
@@ -45,7 +45,7 @@ public class PlayerManager : MonoBehaviour {
     private Animator animator;
 
     [SerializeField]
-    private float currentPower;
+    private int currentPower;
 
     public float CurrentPower
     {
@@ -73,7 +73,7 @@ public class PlayerManager : MonoBehaviour {
         //I placed this code in FixedUpdate because we are using phyics to move.
 
         //if you press down the mouse button...
-        if (Input.GetKeyDown(KeyCode.UpArrow))
+        if (Input.GetKey(KeyCode.UpArrow))
         {
             //and you are on the ground...
             if (grounded)
@@ -85,25 +85,27 @@ public class PlayerManager : MonoBehaviour {
             }
         }
 
-        //if you keep holding down the mouse button...
+        /*
+         * //if you keep holding down the mouse button...
         if (Input.GetKey(KeyCode.UpArrow) && !stoppedJumping)
         {
-            //and your counter hasn't reached zero...
-            if (jumpTimeCounter > 0)
+                //and your counter hasn't reached zero...
+                if (jumpTimeCounter > 0)
             {
                 //keep jumping!
-                rb.velocity = new Vector3(rb.velocity.x, jumpForce, 0);
+                //rb.velocity = new Vector3(rb.velocity.x, jumpForce, 0);
                 jumpTimeCounter -= Time.deltaTime;
             }
-        }
+        }*/
 
 
         //if you stop holding down the mouse button...
         if (Input.GetKeyUp(KeyCode.UpArrow))
         {
             //stop jumping and set your counter to zero.  The timer will reset once we touch the ground again in the update function.
-            jumpTimeCounter = 0;
+            //jumpTimeCounter = 0;
             stoppedJumping = true;
+            jumpTimeCounter = jumpTime;
         }
 
         if (Input.GetKey(KeyCode.Space))
@@ -126,12 +128,10 @@ public class PlayerManager : MonoBehaviour {
         
         if (moveHorizontal > 0 && !isFacingRight)
         {
-            Debug.Log("Rotate Right " + isFacingRight);
             FlipCharacter(true);
         }
         else if (moveHorizontal < 0 && isFacingRight)
         {
-            Debug.Log("Rotate Left");
             FlipCharacter(false);
         }
 
@@ -165,7 +165,7 @@ public class PlayerManager : MonoBehaviour {
         {
             //the jumpcounter is whatever we set jumptime to in the editor.
             chargeTimeCounter = 0f;
-            jumpTimeCounter = jumpTime;
+            
         }
         animator.SetBool("Grounded", grounded);
     }
@@ -216,5 +216,11 @@ public class PlayerManager : MonoBehaviour {
             isTouched = true;
             TakeDamage();
         }
+    }
+
+    public void AddPower(int power)
+    {
+
+        currentPower += power;
     }
 }
