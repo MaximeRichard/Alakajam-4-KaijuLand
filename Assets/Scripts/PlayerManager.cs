@@ -5,14 +5,17 @@ using UnityEngine;
 public class PlayerManager : MonoBehaviour {
 
     public float speed;
+    public int life = 3;
+    public float invincibilityTimer;
 
     private Rigidbody rb;
-
+    private bool isTouched;
+    private Color playerRendererColor;
     /*these floats are the force you use to jump, the max time you want your jump to be allowed to happen,
      * and a counter to track how long you have been jumping*/
     public float jumpForce;
     public float jumpTime;
-    public float jumpTimeCounter;
+    private float jumpTimeCounter;
     /*this bool is to tell us whether you are on the ground or not
      * the layermask lets you select a layer to be ground; you will need to create a layer named ground(or whatever you like) and assign your
      * ground objects to this layer.
@@ -33,9 +36,10 @@ public class PlayerManager : MonoBehaviour {
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-
+        playerRendererColor = gameObject.GetComponent<Renderer>().material.color;
         //sets the jumpCounter to whatever we set our jumptime to in the editor
         jumpTimeCounter = jumpTime;
+        isTouched = false;
     }
 
     void FixedUpdate()
@@ -104,7 +108,40 @@ public class PlayerManager : MonoBehaviour {
         {
             grounded = false;
         }
+    }
 
+    void TakeDamage()
+    {
+        life--;
+        if (life > 0)
+        {
+            
+            playerRendererColor.a = 0.5f;
+            gameObject.GetComponent<Renderer>().material.color = playerRendererColor;
+            StartCoroutine(InvincibilityCooldown());
+        }
+        //TODO Implement invincibility cooldown
+        else
+        {
+            //TODO Trigger Death Animation and end game
+            Debug.Log("Dead");
+        }
+    }
 
+    IEnumerator InvincibilityCooldown()
+    {
+        yield return new WaitForSeconds(invincibilityTimer);
+        playerRendererColor.a = 1f;
+        gameObject.GetComponent<Renderer>().material.color = playerRendererColor;
+        isTouched = false;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.tag == "Enemy" && !isTouched)
+        {
+            isTouched = true;
+            TakeDamage();
+        }
     }
 }
