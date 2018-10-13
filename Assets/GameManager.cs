@@ -78,34 +78,34 @@ public class GameManager : MonoBehaviour
 
     }
 
-    private void LateUpdate()
-    {
-        playerVelocity = playerRigid.velocity.y;
-        if (playerRigid.velocity.y != 0)
-        {
+    //private void LateUpdate()
+    //{
+    //    playerVelocity = playerRigid.velocity.y;
+    //    if (playerRigid.velocity.y != 0)
+    //    {
 
-            float distThisFrame = playerRigid.velocity.y * Time.deltaTime;
-            currentDistToSpawnNext += distThisFrame;
-            currentDistTravelled -= distThisFrame;
-            List<Pair<float, GameObject>> toDelete = new List<Pair<float, GameObject>>();
-            foreach (var item in spawnedPatterns)
-            {
-                item.A += distThisFrame;
-                if (item.A <= 0) toDelete.Add(item);
-            }
-            foreach(var item in toDelete)
-            {
-                Destroy(item.B);
-                spawnedPatterns.Remove(item);
-            }
-        }
+    //        float distThisFrame = playerRigid.velocity.y * Time.deltaTime;
+    //        currentDistToSpawnNext += distThisFrame;
+    //        currentDistTravelled -= distThisFrame;
+    //        List<Pair<float, GameObject>> toDelete = new List<Pair<float, GameObject>>();
+    //        foreach (var item in spawnedPatterns)
+    //        {
+    //            item.A += distThisFrame;
+    //            if (item.A <= 0) toDelete.Add(item);
+    //        }
+    //        foreach(var item in toDelete)
+    //        {
+    //            Destroy(item.B);
+    //            spawnedPatterns.Remove(item);
+    //        }
+    //    }
 
-        if (currentDistToSpawnNext <= 0)
-        {
-            currentDistToSpawnNext = distToSpawnNext;
-            InstantiateRandomPattern();
-        }
-    }
+    //    if (currentDistToSpawnNext <= 0)
+    //    {
+    //        currentDistToSpawnNext = distToSpawnNext;
+    //        InstantiateRandomPattern();
+    //    }
+    //}
 
 
 }
