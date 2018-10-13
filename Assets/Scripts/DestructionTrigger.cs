@@ -8,7 +8,7 @@ public class DestructionTrigger : MonoBehaviour {
     {
         if(collision.tag == "Destructible")
         {
-            Destroy(gameObject);
+            GameManager.Instance.DestroyObj(collision.gameObject);
         }
     }
 }

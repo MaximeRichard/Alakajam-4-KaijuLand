@@ -46,7 +46,7 @@ public class TextureScroller : MonoBehaviour
         {
             mat.mainTexture = GenerateTexture(currentPhase);
             mat.mainTextureScale = new Vector2(1, textureScale);
-            mat.mainTextureOffset = new Vector2(0,  textureScale * offset / prevTextureScale - textureScale);
+            mat.mainTextureOffset = new Vector2(0, textureScale * offset / prevTextureScale - textureScale);
             isInTransition = false;
         }
         else if (shouldSwitchPhase)
@@ -55,7 +55,7 @@ public class TextureScroller : MonoBehaviour
             isInTransition = true;
             mat.mainTexture = GenerateTransitionTexture(currentPhase, nextPhase);
             mat.mainTextureScale = new Vector2(1, textureScale);
-            mat.mainTextureOffset = new Vector2(0, textureScale * offset / prevTextureScale -textureScale);
+            mat.mainTextureOffset = new Vector2(0, textureScale * offset / prevTextureScale - textureScale);
             currentPhase = nextPhase;
             shouldSwitchPhase = false;
 
@@ -111,8 +111,9 @@ public class TextureScroller : MonoBehaviour
 
     }
 
-    public void Scroll(float scrollAmmount)
+    public void Scroll(float speed)
     {
+        float scrollAmmount = speed * Time.deltaTime * textureScale;
         mat.mainTextureOffset = new Vector2(0, mat.mainTextureOffset.y + scrollAmmount);
 
         float targetOffset = mat.mainTextureOffset.y + scrollAmmount;
@@ -134,27 +135,5 @@ public class TextureScroller : MonoBehaviour
     }
 
 
-
-    //DEBUG
-    private void Start()
-    {
-        Init();
-    }
-    //DEBUG
-    private void Update()
-    {
-        if (Input.GetKey(KeyCode.Space))
-        {
-            SwitchToNextPhase();
-        }
-        if (Input.GetKey(KeyCode.UpArrow))
-        {
-            Scroll(debugScrollSpeed * Time.deltaTime * textureScale);
-        }
-        if (Input.GetKey(KeyCode.DownArrow))
-        {
-            Scroll(-debugScrollSpeed * Time.deltaTime * textureScale);
-        }
-    }
 
 }
