@@ -42,6 +42,7 @@ public class PlayerManager : MonoBehaviour {
     private Color playerRendererColor;
     private float chargeTimeCounter;
     private float cachedGravityScale;
+    private Animator animator;
 
     [SerializeField]
     private float currentPower;
@@ -64,6 +65,7 @@ public class PlayerManager : MonoBehaviour {
         cachedGravityScale = rb.gravityScale;
         chargeTimeCounter = 0f;
         isFacingRight = true;
+        animator = GetComponent<Animator>();
     }
 
     void FixedUpdate()
@@ -79,7 +81,7 @@ public class PlayerManager : MonoBehaviour {
                 //jump!
                 rb.velocity = new Vector2(rb.velocity.x, jumpForce);
                 stoppedJumping = false;
-                GetComponent<Animator>().SetTrigger("Jump");
+                animator.SetTrigger("Jump");
             }
         }
 
@@ -133,8 +135,8 @@ public class PlayerManager : MonoBehaviour {
             FlipCharacter(false);
         }
 
-        if (moveHorizontal != 0 && grounded) GetComponent<Animator>().SetBool("Moving", true);
-        else GetComponent<Animator>().SetBool("Moving", false);
+        if (moveHorizontal != 0 && grounded) animator.SetBool("Moving", true);
+        else animator.SetBool("Moving", false);
         if (!isFacingRight) moveHorizontal = -moveHorizontal;
         Vector3 movement = new Vector3(0.0f, 0.0f, moveHorizontal);
 
@@ -164,7 +166,7 @@ public class PlayerManager : MonoBehaviour {
             //the jumpcounter is whatever we set jumptime to in the editor.
             chargeTimeCounter = 0f;
             jumpTimeCounter = jumpTime;
-            GetComponent<Animator>().SetTrigger("GroundTouch");
+            animator.SetTrigger("GroundTouch");
         }
     }
 
@@ -186,7 +188,7 @@ public class PlayerManager : MonoBehaviour {
         life--;
         if (life > 0)
         {
-            
+            animator.SetTrigger("Hurt");
             playerRendererColor.a = 0.5f;
             playerRenderer.material.color = playerRendererColor;
             StartCoroutine(InvincibilityCooldown());
@@ -207,7 +209,7 @@ public class PlayerManager : MonoBehaviour {
         isTouched = false;
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.gameObject.tag == "Enemy" && !isTouched)
         {

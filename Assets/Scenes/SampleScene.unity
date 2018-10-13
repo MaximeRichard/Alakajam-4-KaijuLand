@@ -862,6 +862,7 @@ MonoBehaviour:
   offsetY: 1
   maxDistance: 2
   smoothFactor: 0.25
+  previousPos: {x: 0, y: 0, z: 0}
 --- !u!1001 &592056763
 Prefab:
   m_ObjectHideFlags: 0
@@ -1129,16 +1130,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 95282483341696516, guid: 1ce77b6a14eb9d2439fbc1a5e8f1df7e,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 95282483341696516, guid: 1ce77b6a14eb9d2439fbc1a5e8f1df7e,
-        type: 2}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: a24d58497a5bd4047a30d965d3dd9189, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1ce77b6a14eb9d2439fbc1a5e8f1df7e, type: 2}
   m_IsPrefabAsset: 0
@@ -1212,11 +1203,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4103909957965786, guid: c961c30d67186304a9db30b4522dc42a, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 5.32
+      value: 0.35
       objectReference: {fileID: 0}
     - target: {fileID: 4103909957965786, guid: c961c30d67186304a9db30b4522dc42a, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0.5
+      value: -5.03
       objectReference: {fileID: 0}
     - target: {fileID: 4103909957965786, guid: c961c30d67186304a9db30b4522dc42a, type: 2}
       propertyPath: m_LocalPosition.z
