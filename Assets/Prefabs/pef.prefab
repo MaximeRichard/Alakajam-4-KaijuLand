@@ -112,11 +112,10 @@ GameObject:
   - component: {fileID: 95282483341696516}
   - component: {fileID: 114361595777389144}
   - component: {fileID: 50369095636462272}
-  - component: {fileID: 58971928377394394}
   - component: {fileID: 70240897353663212}
   m_Layer: 0
   m_Name: pef
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -897,8 +896,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1147261247580534}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -4.92, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 4824432788890438}
   - {fileID: 4528655796797602}
@@ -1042,7 +1041,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 1
-  m_Mass: 2.190564
+  m_Mass: 0.5475993
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 3.5
@@ -1051,21 +1050,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!58 &58971928377394394
-CircleCollider2D:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1147261247580534}
-  m_Enabled: 0
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.84}
-  serializedVersion: 2
-  m_Radius: 0.9
 --- !u!70 &70240897353663212
 CapsuleCollider2D:
   m_ObjectHideFlags: 1
@@ -1088,9 +1072,9 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1147261247580534}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 02f6640121d07294586a1d897f6b5b2e, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a24d58497a5bd4047a30d965d3dd9189, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1125,6 +1109,7 @@ MonoBehaviour:
   invincibilityTimer: 2.5
   timeToCharge: 2
   basePowerRate: 1
+  rotationTreshold: 0.01
   playerRenderer: {fileID: 137026337927453886}
   currentPower: 0
 --- !u!137 &137026337927453886
