@@ -79,6 +79,7 @@ public class PlayerManager : MonoBehaviour {
                 //jump!
                 rb.velocity = new Vector2(rb.velocity.x, jumpForce);
                 stoppedJumping = false;
+                GetComponent<Animator>().SetTrigger("Jump");
             }
         }
 
@@ -123,17 +124,17 @@ public class PlayerManager : MonoBehaviour {
         
         if (moveHorizontal > 0 && !isFacingRight)
         {
-            GetComponent<Animator>().SetBool("Moving", true);
             Debug.Log("Rotate Right " + isFacingRight);
             FlipCharacter(true);
         }
         else if (moveHorizontal < 0 && isFacingRight)
         {
-            GetComponent<Animator>().SetBool("Moving", true);
             Debug.Log("Rotate Left");
             FlipCharacter(false);
         }
-        else if (moveHorizontal == 0) GetComponent<Animator>().SetBool("Moving", false);
+
+        if (moveHorizontal != 0 && grounded) GetComponent<Animator>().SetBool("Moving", true);
+        else GetComponent<Animator>().SetBool("Moving", false);
         if (!isFacingRight) moveHorizontal = -moveHorizontal;
         Vector3 movement = new Vector3(0.0f, 0.0f, moveHorizontal);
 
@@ -163,6 +164,7 @@ public class PlayerManager : MonoBehaviour {
             //the jumpcounter is whatever we set jumptime to in the editor.
             chargeTimeCounter = 0f;
             jumpTimeCounter = jumpTime;
+            GetComponent<Animator>().SetTrigger("GroundTouch");
         }
     }
 

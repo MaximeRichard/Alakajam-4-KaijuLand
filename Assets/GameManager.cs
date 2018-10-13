@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
     public List<Pair<float, GameObject>> spawnedPatterns;
 
     public CameraFollow2D cameraTracker;
+    public FollowPlayerY backgroundFollow;
 
     private Rigidbody2D playerRigid;
 
@@ -49,6 +50,8 @@ public class GameManager : MonoBehaviour
     public void Start()
     {
         SpawnPlayer();
+        scrollingSide_L.Init();
+        scrollingSide_R.Init();
     }
 
 
@@ -61,6 +64,7 @@ public class GameManager : MonoBehaviour
         player.transform.position = playerSpawnPoint.position;
         cameraTracker.target = player.transform;
         spawnedPatterns.Add(new Pair<float, GameObject>(distBeforeDestroy, sPoint));
+        backgroundFollow.target = player.transform;
 
     }
 
