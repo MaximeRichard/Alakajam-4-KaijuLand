@@ -5,10 +5,16 @@ using UnityEngine;
 public class TemplateStartTrigger : MonoBehaviour {
 
     public TemplateManager template;
+    bool triggered = false;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        template.OnStart();
+        if (!triggered)
+        {
+            template.OnStart();
+            triggered = true;
+        }
+            
     }
 
 }

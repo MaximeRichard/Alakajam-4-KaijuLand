@@ -5,9 +5,15 @@ using UnityEngine;
 public class TemplateEndTrigger : MonoBehaviour {
 
     public TemplateManager template;
+    bool triggered = false;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        template.OnEnd();
+        if (!triggered)
+        {
+            template.OnEnd();
+            triggered = true;
+        }
+
     }
 }
