@@ -3804,7 +3804,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1587223171350976}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -39.82, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4880438947121056}
@@ -10044,8 +10044,8 @@ PolygonCollider2D:
       - {x: -1.1194327, y: -1.216844}
       - {x: -0.40326294, y: -1.2411597}
       - {x: 0.24481285, y: -1.0118408}
-      - {x: 1.2305951, y: -1.3260574}
-      - {x: 1.793469, y: -0.68023396}
+      - {x: 1.9380226, y: -1.023026}
+      - {x: 2.500896, y: 0.0015902519}
       - {x: 1.5509825, y: 0.006140709}
 --- !u!60 &60670633591691016
 PolygonCollider2D:
@@ -10136,7 +10136,7 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.92724156, y: -0.82440376}
+    - - {x: 1.6504759, y: -0.005003929}
       - {x: 0.33383012, y: 0.012413979}
       - {x: 0.5727103, y: -0.60622597}
       - {x: -1.833133, y: 0.004060616}
@@ -10147,7 +10147,7 @@ PolygonCollider2D:
       - {x: 0.74066466, y: -1.2871339}
       - {x: 1.4064782, y: -1.3300248}
       - {x: 1.8095287, y: -1.0730598}
-      - {x: 1.3418477, y: -0.8881674}
+      - {x: 1.8911308, y: -0.66385937}
 --- !u!60 &60735485311834012
 PolygonCollider2D:
   m_ObjectHideFlags: 1
@@ -12134,6 +12134,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   powerBonus: 10
+  doesDamage: 0
 --- !u!114 &114386219895833918
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -12354,6 +12355,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   powerBonus: 10
+  doesDamage: 0
 --- !u!114 &114977557702378608
 MonoBehaviour:
   m_ObjectHideFlags: 1

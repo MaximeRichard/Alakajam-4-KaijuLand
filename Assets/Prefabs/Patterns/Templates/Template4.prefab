@@ -382,7 +382,6 @@ GameObject:
   - component: {fileID: 4977881309760378}
   - component: {fileID: 33572687026695810}
   - component: {fileID: 23933558891286010}
-  - component: {fileID: 60655124729996616}
   m_Layer: 9
   m_Name: Rock2 (13)
   m_TagString: Untagged
@@ -6109,7 +6108,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1385765382903606}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -79.46, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4429481548287336}
@@ -12079,41 +12078,6 @@ PolygonCollider2D:
       - {x: 1.4064782, y: -1.3300248}
       - {x: 1.8095287, y: -1.0730598}
       - {x: 1.905361, y: -0.66766304}
---- !u!60 &60655124729996616
-PolygonCollider2D:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1109192727528504}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 1.7051345, y: -0.51202095}
-      - {x: 1.6323607, y: 0.0062880907}
-      - {x: -1.833133, y: 0.004060616}
-      - {x: -1.6813378, y: -0.53158617}
-      - {x: -1.9207212, y: -0.7081003}
-      - {x: -1.693963, y: -2.1637082}
-      - {x: -0.56169075, y: -2.211348}
-      - {x: 0.74066466, y: -1.2871339}
-      - {x: 1.4064782, y: -1.3300248}
-      - {x: 1.8095287, y: -1.0730598}
-      - {x: 1.905361, y: -0.66766304}
 --- !u!60 &60703455373097754
 PolygonCollider2D:
   m_ObjectHideFlags: 1
@@ -12178,8 +12142,10 @@ PolygonCollider2D:
       - {x: -1.833133, y: 0.004060616}
       - {x: -1.6813378, y: -0.53158617}
       - {x: -1.9207212, y: -0.7081003}
-      - {x: -1.693963, y: -2.1637082}
-      - {x: -0.56169075, y: -2.211348}
+      - {x: -1.4393758, y: -3.4773846}
+      - {x: -0.7730596, y: -3.7282698}
+      - {x: 0.110420465, y: -3.4537334}
+      - {x: 0.14295602, y: -1.7635632}
       - {x: 0.74066466, y: -1.2871339}
       - {x: 1.4064782, y: -1.3300248}
       - {x: 1.8095287, y: -1.0730598}
@@ -14325,6 +14291,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   powerBonus: 10
+  doesDamage: 0
 --- !u!114 &114333077650110252
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -14356,6 +14323,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   powerBonus: 10
+  doesDamage: 0
 --- !u!114 &114629740345625790
 MonoBehaviour:
   m_ObjectHideFlags: 1
