@@ -269,6 +269,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   patternsPrefabs:
   - {fileID: 1088706063103502, guid: 932a2f20dd459574f95453dfeceaaa00, type: 2}
+  - {fileID: 1587223171350976, guid: 36375f709db90824da51ed0a72c28c8c, type: 2}
+  - {fileID: 1203864098285550, guid: b135119b6b50bf045b75e647d2d7e05c, type: 2}
+  - {fileID: 1385765382903606, guid: c28be0cd503c99849bd3ce727ac8f524, type: 2}
   spawnPointPrefab: {fileID: 1340074519922374, guid: 3ee4816f61da6f74a8f4f0a66840ffb0,
     type: 2}
   playerPrefab: {fileID: 1147261247580534, guid: 1ce77b6a14eb9d2439fbc1a5e8f1df7e,
