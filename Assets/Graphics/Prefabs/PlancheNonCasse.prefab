@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33695163307704956}
   - component: {fileID: 23444900485287598}
   - component: {fileID: 64242313905191122}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: "PlancheNONCass\xE91"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   - component: {fileID: 33076241014420172}
   - component: {fileID: 23189806529957766}
   - component: {fileID: 64810199936843664}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: "PlancheNONCass\xE93"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58,7 +58,7 @@ GameObject:
   - component: {fileID: 33206187774278846}
   - component: {fileID: 23206091911607706}
   - component: {fileID: 64225563369657312}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: "PlancheNONCass\xE92"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -75,7 +75,7 @@ GameObject:
   - component: {fileID: 4059421744609796}
   - component: {fileID: 61269219396788194}
   - component: {fileID: 114748143664296150}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: PlancheNonCasse
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -88,16 +88,16 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1919574744328418}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.937, y: 0.442, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: 0.010884462, w: 0.99994075}
+  m_LocalPosition: {x: -2.412, y: -0.197, z: -0.2}
+  m_LocalScale: {x: 1.0841, y: 1.0841, z: 1.0841}
   m_Children:
   - {fileID: 4645549634853632}
   - {fileID: 4271868686484214}
   - {fileID: 4332044950960210}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 1.2470001}
 --- !u!4 &4271868686484214
 Transform:
   m_ObjectHideFlags: 1
