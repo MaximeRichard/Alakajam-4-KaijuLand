@@ -5,10 +5,19 @@ using UnityEngine;
 public class destructibleTrigger : MonoBehaviour
 {
     public GameObject destroyedVersion;
-    void OnMouseDown()
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        GameObject go = Instantiate(destroyedVersion, transform.position, transform.rotation, transform.parent);
-        go.transform.localScale = transform.localScale;
-        Destroy(gameObject);
+        Debug.Log(collision.tag);
+        if(collision.tag == "Player")
+        {
+            if (collision.gameObject.GetComponent<PlayerManager>().isDashing)
+            {
+                GameObject go = Instantiate(destroyedVersion, transform.position, transform.rotation, transform.parent);
+                go.transform.localScale = transform.localScale;
+                Destroy(gameObject);
+                Destroy(go, 3f);
+            }
+        }
     }
 }

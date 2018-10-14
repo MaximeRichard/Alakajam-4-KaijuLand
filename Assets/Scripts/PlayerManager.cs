@@ -38,7 +38,7 @@ public class PlayerManager : MonoBehaviour {
     public Renderer playerRenderer;
     public float gravityMultiply = 1.2f;
     public float maxVelocity = 100f;
-
+    public bool isDashing;
     private Rigidbody2D rb;
     private bool isTouched,isFacingRight;
     private Color playerRendererColor;
@@ -68,6 +68,7 @@ public class PlayerManager : MonoBehaviour {
         chargeTimeCounter = 0f;
         isFacingRight = true;
         animator = GetComponent<Animator>();
+        isDashing = false;
     }
 
     void FixedUpdate()
@@ -113,10 +114,12 @@ public class PlayerManager : MonoBehaviour {
         if (Input.GetKey(KeyCode.Space))
         {
             rb.gravityScale = cachedGravityScale * gravityMultiply;
+            isDashing = true;
         }
         else if (Input.GetKeyUp(KeyCode.Space)) {
             rb.gravityScale = cachedGravityScale;
             chargeTimeCounter = 0;
+            isDashing = false;
         }
         rb.velocity = Vector2.ClampMagnitude(rb.velocity, maxVelocity);
     }
