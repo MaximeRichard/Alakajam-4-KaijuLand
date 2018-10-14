@@ -31,7 +31,7 @@ public class PlayerManager : MonoBehaviour
 
     //********** Other **********//
 
-    public float speed;
+    public float speed, blowbackForce;
     public float maxSpeed = 100f;
     public int life = 3;
     public float invincibilityTimer;
@@ -41,7 +41,7 @@ public class PlayerManager : MonoBehaviour
     public Renderer playerRenderer;
     public float gravityMultiply = 1.2f;
     public float maxVelocity = 100f;
-
+    public bool isDashing;
     private Rigidbody2D rb;
     private bool isTouched, isFacingRight;
     private Color playerRendererColor;
@@ -71,6 +71,7 @@ public class PlayerManager : MonoBehaviour
         chargeTimeCounter = 0f;
         isFacingRight = true;
         animator = GetComponent<Animator>();
+        isDashing = false;
     }
 
     void FixedUpdate()
@@ -222,8 +223,20 @@ public class PlayerManager : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy" && !isTouched)
         {
+
             isTouched = true;
-            TakeDamage();
+
+            // force is how forcefully we will push the player away from the enemy.
+                // Calculate Angle Between the collision point and the player
+                Vector2 dir = collision.contacts[0].point -  new Vector2(transform.position.x, transform.position.y);
+                // We then get the opposite (-Vector3) and normalize it
+                dir = -dir.normalized;
+                // And finally we add force in the direction of dir and multiply it by force. 
+                // This will push back the player²
+                GetComponent<Rigidbody2D>().velocity = (dir * blowbackForce);
+
+
+                TakeDamage();
         }
     }
 
