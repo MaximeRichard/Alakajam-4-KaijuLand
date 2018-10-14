@@ -3,7 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerManager : MonoBehaviour {
+public class PlayerManager : MonoBehaviour
+{
 
     //****** Jump Parameters ******//
     /*these floats are the force you use to jump, the max time you want your jump to be allowed to happen,
@@ -14,7 +15,8 @@ public class PlayerManager : MonoBehaviour {
     /*this bool is to tell us whether you are on the ground or not
      * the layermask lets you select a layer to be ground; you will need to create a layer named ground(or whatever you like) and assign your
      * ground objects to this layer.
-     * The stoppedJumping bool lets us track when the player stops jumping.*/
+     * The stoppedJumping bool lets us track when the player stops jumping.
+     * isDashing indicate if the player is currently going down violently*/
     public bool grounded;
     public LayerMask whatIsGround;
     public bool stoppedJumping;
@@ -40,7 +42,7 @@ public class PlayerManager : MonoBehaviour {
     public float maxVelocity = 100f;
     public bool isDashing;
     private Rigidbody2D rb;
-    private bool isTouched,isFacingRight;
+    private bool isTouched, isFacingRight;
     private Color playerRendererColor;
     private float chargeTimeCounter;
     private float cachedGravityScale;
@@ -74,7 +76,7 @@ public class PlayerManager : MonoBehaviour {
     void FixedUpdate()
     {
         //I placed this code in FixedUpdate because we are using phyics to move.
-
+        if (animator.GetBool("Dead")) return;
         //if you press down the mouse button...
         if (Input.GetKey(KeyCode.UpArrow))
         {
@@ -111,26 +113,29 @@ public class PlayerManager : MonoBehaviour {
             jumpTimeCounter = jumpTime;
         }
 
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKey(KeyCode.Space) && !grounded)
         {
             rb.gravityScale = cachedGravityScale * gravityMultiply;
             isDashing = true;
+            animator.SetBool("Dash", true);
         }
-        else if (Input.GetKeyUp(KeyCode.Space)) {
+        else if (Input.GetKeyUp(KeyCode.Space))
+        {
             rb.gravityScale = cachedGravityScale;
             chargeTimeCounter = 0;
             isDashing = false;
+            animator.SetBool("Dash", false);
         }
         rb.velocity = Vector2.ClampMagnitude(rb.velocity, maxVelocity);
     }
 
     void Update()
     {
-
+        if (animator.GetBool("Dead")) return;
         //***************Input Movement Left Right****************//
 
         float moveHorizontal = Input.GetAxis("Horizontal");
-        
+
         if (moveHorizontal > 0 && !isFacingRight)
         {
             FlipCharacter(true);
@@ -159,18 +164,20 @@ public class PlayerManager : MonoBehaviour {
         if (Input.GetKey(KeyCode.Space))
         {
             chargeTimeCounter += Time.deltaTime;
-            if(chargeTimeCounter > timeToCharge)
+            if (chargeTimeCounter > timeToCharge)
             {
                 currentPower += basePowerRate;
             }
+            isDashing = true;
         }
 
-            //if we are grounded...
-            if (grounded)
+        //if we are grounded...
+        if (grounded)
         {
             //the jumpcounter is whatever we set jumptime to in the editor.
             chargeTimeCounter = 0f;
-            
+            isDashing = false;
+            animator.SetBool("Dash", false);
         }
         animator.SetBool("Grounded", grounded);
     }
@@ -202,6 +209,8 @@ public class PlayerManager : MonoBehaviour {
         else
         {
             //TODO Trigger Death Animation and end game
+            animator.SetTrigger("Hurt");
+            animator.SetBool("Dead", true);
             Debug.Log("Dead");
         }
     }
@@ -216,14 +225,16 @@ public class PlayerManager : MonoBehaviour {
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.tag == "Enemy" && !isTouched)
+        if (collision.gameObject.tag == "Enemy" && !isTouched)
         {
+            if (collision.gameObject.GetComponent<EnemyBehaviour>().doesDamage)
+            {
 
-            isTouched = true;
+                isTouched = true;
 
-            // force is how forcefully we will push the player away from the enemy.
+                // force is how forcefully we will push the player away from the enemy.
                 // Calculate Angle Between the collision point and the player
-                Vector2 dir = collision.contacts[0].point -  new Vector2(transform.position.x, transform.position.y);
+                Vector2 dir = collision.contacts[0].point - new Vector2(transform.position.x, transform.position.y);
                 // We then get the opposite (-Vector3) and normalize it
                 dir = -dir.normalized;
                 // And finally we add force in the direction of dir and multiply it by force. 
@@ -232,12 +243,12 @@ public class PlayerManager : MonoBehaviour {
 
 
                 TakeDamage();
+            }
         }
     }
 
     public void AddPower(int power)
     {
-
         currentPower += power;
     }
 }
