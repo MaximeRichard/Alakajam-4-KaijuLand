@@ -11,6 +11,7 @@ public class EnemyBehaviour : MonoBehaviour {
     private bool isRight,endOfPlatform;
     private Vector3 movement;
     private Transform currentCheck;
+    private Transform absoluteLeft, absoluteRight;
     
     // Use this for initialization
     void Start () {
@@ -38,14 +39,17 @@ public class EnemyBehaviour : MonoBehaviour {
         {
             isRight = false;
             movement = Vector3.left;
-            currentCheck = leftCheck;
+            currentCheck = rightCheck;
+            transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
         }
         else
         {
             isRight = true;
             movement = Vector3.right;
             currentCheck = rightCheck;
+            transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
         }
+        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -53,11 +57,14 @@ public class EnemyBehaviour : MonoBehaviour {
         Debug.Log(collision.gameObject.tag);
         if(collision.gameObject.tag == "Player")
         {
-
-            //TODO add force to blow back player
-            //collision.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up * 200);
-            collision.gameObject.GetComponent<PlayerManager>().AddPower(powerBonus);
-            Destroy(gameObject);
+            if (!collision.gameObject.GetComponent<PlayerManager>().grounded)
+            {
+                //TODO add force to blow back player
+                //collision.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up * 200);
+                collision.gameObject.GetComponent<PlayerManager>().AddPower(powerBonus);
+                if (GetComponent<Animator>()) GetComponent<Animator>().SetTrigger("Hit");
+                else Destroy(gameObject);
+            }
         }
     }
 }
