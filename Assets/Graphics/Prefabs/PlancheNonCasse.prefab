@@ -72,6 +72,7 @@ GameObject:
   - component: {fileID: 4059421744609796}
   - component: {fileID: 114748143664296150}
   - component: {fileID: 60601527013208916}
+  - component: {fileID: 60345858600773400}
   m_Layer: 9
   m_Name: PlancheNonCasse
   m_TagString: Untagged
@@ -260,6 +261,38 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1125705420430138}
   m_Mesh: {fileID: 4300000, guid: f7c96b5cc6db7a94da1e1b0195ca8f0d, type: 3}
+--- !u!60 &60345858600773400
+PolygonCollider2D:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1919574744328418}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.68450063, y: 0.043168902}
+      - {x: 0.46734294, y: -0.008429373}
+      - {x: -0.006548181, y: 0.0010753759}
+      - {x: -0.6389768, y: 0.060923032}
+      - {x: -0.843691, y: 0.117039315}
+      - {x: -0.8697251, y: 0.025815476}
+      - {x: 0.077940725, y: -0.056799017}
+      - {x: 0.67971015, y: -0.06104968}
 --- !u!60 &60601527013208916
 PolygonCollider2D:
   m_ObjectHideFlags: 1
