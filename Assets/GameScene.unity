@@ -26,19 +26,19 @@ RenderSettings:
   m_AmbientIntensity: 0
   m_AmbientMode: 1
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 0}
+  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
   m_HaloTexture: {fileID: 0}
   m_SpotCookie: {fileID: 10001, guid: 0000000000000000e000000000000000, type: 0}
-  m_DefaultReflectionMode: 0
+  m_DefaultReflectionMode: 1
   m_DefaultReflectionResolution: 128
   m_ReflectionBounces: 1
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -415,7 +415,7 @@ MonoBehaviour:
   - {fileID: 1587223171350976, guid: 36375f709db90824da51ed0a72c28c8c, type: 2}
   - {fileID: 1203864098285550, guid: b135119b6b50bf045b75e647d2d7e05c, type: 2}
   - {fileID: 1385765382903606, guid: c28be0cd503c99849bd3ce727ac8f524, type: 2}
-  spawnPointPrefab: {fileID: 1340074519922374, guid: 3ee4816f61da6f74a8f4f0a66840ffb0,
+  spawnPointPrefab: {fileID: 1163666927615574, guid: 793f71b9284940c4d816265ab513a4b7,
     type: 2}
   playerPrefab: {fileID: 1147261247580534, guid: 1ce77b6a14eb9d2439fbc1a5e8f1df7e,
     type: 2}
@@ -431,7 +431,7 @@ MonoBehaviour:
   distBeforeDestroy: 60
   scrollFactor: 0.1
   playerVelocity: 0
-  endPattern: {fileID: 1299663551870700, guid: 622be68d74c1c9740b2333aaff7b1ea1, type: 2}
+  endPattern: {fileID: 1643577678176456, guid: b6a03dedc254eb24988be9b0d2357968, type: 2}
   money: 0
 --- !u!1 &192496120
 GameObject:
