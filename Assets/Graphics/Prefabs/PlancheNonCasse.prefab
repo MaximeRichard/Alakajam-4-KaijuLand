@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 4645549634853632}
   - component: {fileID: 33695163307704956}
   - component: {fileID: 23444900485287598}
-  - component: {fileID: 64242313905191122}
   m_Layer: 9
   m_Name: "PlancheNONCass\xE91"
   m_TagString: Untagged
@@ -39,7 +38,6 @@ GameObject:
   - component: {fileID: 4332044950960210}
   - component: {fileID: 33076241014420172}
   - component: {fileID: 23189806529957766}
-  - component: {fileID: 64810199936843664}
   m_Layer: 9
   m_Name: "PlancheNONCass\xE93"
   m_TagString: Untagged
@@ -57,7 +55,6 @@ GameObject:
   - component: {fileID: 4271868686484214}
   - component: {fileID: 33206187774278846}
   - component: {fileID: 23206091911607706}
-  - component: {fileID: 64225563369657312}
   m_Layer: 9
   m_Name: "PlancheNONCass\xE92"
   m_TagString: Untagged
@@ -73,8 +70,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4059421744609796}
-  - component: {fileID: 61269219396788194}
   - component: {fileID: 114748143664296150}
+  - component: {fileID: 60601527013208916}
   m_Layer: 9
   m_Name: PlancheNonCasse
   m_TagString: Untagged
@@ -88,16 +85,16 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1919574744328418}
-  m_LocalRotation: {x: -0, y: -0, z: 0.010884462, w: 0.99994075}
-  m_LocalPosition: {x: -2.412, y: -0.197, z: -0.2}
-  m_LocalScale: {x: 1.0841, y: 1.0841, z: 1.0841}
+  m_LocalRotation: {x: -0, y: -0, z: 0.00470829, w: 0.9999889}
+  m_LocalPosition: {x: 1.043, y: 7.843, z: -11.65}
+  m_LocalScale: {x: 1.4272176, y: 1.4272176, z: 1.4272176}
   m_Children:
   - {fileID: 4645549634853632}
   - {fileID: 4271868686484214}
   - {fileID: 4332044950960210}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 1.2470001}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0.54}
 --- !u!4 &4271868686484214
 Transform:
   m_ObjectHideFlags: 1
@@ -263,8 +260,8 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1125705420430138}
   m_Mesh: {fileID: 4300000, guid: f7c96b5cc6db7a94da1e1b0195ca8f0d, type: 3}
---- !u!61 &61269219396788194
-BoxCollider2D:
+--- !u!60 &60601527013208916
+PolygonCollider2D:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -275,7 +272,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.068167835, y: -0.020826668}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -285,51 +282,16 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1.5825269, y: 0.1554687}
-  m_EdgeRadius: 0
---- !u!64 &64225563369657312
-MeshCollider:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1234061099232448}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300004, guid: f7c96b5cc6db7a94da1e1b0195ca8f0d, type: 3}
---- !u!64 &64242313905191122
-MeshCollider:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1125705420430138}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: f7c96b5cc6db7a94da1e1b0195ca8f0d, type: 3}
---- !u!64 &64810199936843664
-MeshCollider:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1225669248577998}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300002, guid: f7c96b5cc6db7a94da1e1b0195ca8f0d, type: 3}
+  m_Points:
+    m_Paths:
+    - - {x: 0.68450063, y: 0.043168902}
+      - {x: 0.46734294, y: -0.008429373}
+      - {x: -0.006548181, y: 0.0010753759}
+      - {x: -0.6389768, y: 0.060923032}
+      - {x: -0.843691, y: 0.117039315}
+      - {x: -0.8697251, y: 0.025815476}
+      - {x: 0.077940725, y: -0.056799017}
+      - {x: 0.67971015, y: -0.06104968}
 --- !u!114 &114748143664296150
 MonoBehaviour:
   m_ObjectHideFlags: 1

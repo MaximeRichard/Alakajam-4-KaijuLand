@@ -153,7 +153,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4966178574687648}
   m_Layer: 0
-  m_Name: EndRockEnd
+  m_Name: EndRockBrake
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

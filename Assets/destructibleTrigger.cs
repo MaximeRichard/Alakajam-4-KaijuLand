@@ -7,7 +7,8 @@ public class destructibleTrigger : MonoBehaviour
     public GameObject destroyedVersion;
     void OnMouseDown()
     {
-        Instantiate(destroyedVersion, transform.position, transform.rotation);
+        GameObject go = Instantiate(destroyedVersion, transform.position, transform.rotation, transform.parent);
+        go.transform.localScale = transform.localScale;
         Destroy(gameObject);
     }
 }
