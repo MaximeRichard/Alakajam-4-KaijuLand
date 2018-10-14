@@ -76,7 +76,7 @@ public class PlayerManager : MonoBehaviour
     void FixedUpdate()
     {
         //I placed this code in FixedUpdate because we are using phyics to move.
-
+        if (animator.GetBool("Dead")) return;
         //if you press down the mouse button...
         if (Input.GetKey(KeyCode.UpArrow))
         {
@@ -113,23 +113,25 @@ public class PlayerManager : MonoBehaviour
             jumpTimeCounter = jumpTime;
         }
 
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKey(KeyCode.Space) && !grounded)
         {
             rb.gravityScale = cachedGravityScale * gravityMultiply;
             isDashing = true;
+            animator.SetBool("Dash", true);
         }
         else if (Input.GetKeyUp(KeyCode.Space))
         {
             rb.gravityScale = cachedGravityScale;
             chargeTimeCounter = 0;
             isDashing = false;
+            animator.SetBool("Dash", false);
         }
         rb.velocity = Vector2.ClampMagnitude(rb.velocity, maxVelocity);
     }
 
     void Update()
     {
-
+        if (animator.GetBool("Dead")) return;
         //***************Input Movement Left Right****************//
 
         float moveHorizontal = Input.GetAxis("Horizontal");
@@ -175,6 +177,7 @@ public class PlayerManager : MonoBehaviour
             //the jumpcounter is whatever we set jumptime to in the editor.
             chargeTimeCounter = 0f;
             isDashing = false;
+            animator.SetBool("Dash", false);
         }
         animator.SetBool("Grounded", grounded);
     }
@@ -206,6 +209,8 @@ public class PlayerManager : MonoBehaviour
         else
         {
             //TODO Trigger Death Animation and end game
+            animator.SetTrigger("Hurt");
+            animator.SetBool("Dead", true);
             Debug.Log("Dead");
         }
     }
@@ -222,12 +227,14 @@ public class PlayerManager : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy" && !isTouched)
         {
+            if (collision.gameObject.GetComponent<EnemyBehaviour>().doesDamage)
+            {
 
-            isTouched = true;
+                isTouched = true;
 
-            // force is how forcefully we will push the player away from the enemy.
+                // force is how forcefully we will push the player away from the enemy.
                 // Calculate Angle Between the collision point and the player
-                Vector2 dir = collision.contacts[0].point -  new Vector2(transform.position.x, transform.position.y);
+                Vector2 dir = collision.contacts[0].point - new Vector2(transform.position.x, transform.position.y);
                 // We then get the opposite (-Vector3) and normalize it
                 dir = -dir.normalized;
                 // And finally we add force in the direction of dir and multiply it by force. 
@@ -236,6 +243,7 @@ public class PlayerManager : MonoBehaviour
 
 
                 TakeDamage();
+            }
         }
     }
 
