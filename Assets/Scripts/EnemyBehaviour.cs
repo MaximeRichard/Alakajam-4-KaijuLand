@@ -7,6 +7,8 @@ public class EnemyBehaviour : MonoBehaviour {
     public Transform leftCheck, rightCheck;
     public LayerMask platformMask;
     public int powerBonus = 10;
+    [HideInInspector]
+    public bool doesDamage;
 
     private bool isRight,endOfPlatform;
     private Vector3 movement;
@@ -18,6 +20,7 @@ public class EnemyBehaviour : MonoBehaviour {
         isRight = true;
         movement = Vector3.right;
         currentCheck = rightCheck;
+        doesDamage = true;
 	}
 	
 	// Update is called once per frame
@@ -59,6 +62,7 @@ public class EnemyBehaviour : MonoBehaviour {
         {
             if (!collision.gameObject.GetComponent<PlayerManager>().grounded)
             {
+                doesDamage = false;
                 //TODO add force to blow back player
                 //collision.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up * 200);
                 collision.gameObject.GetComponent<PlayerManager>().AddPower(powerBonus);
