@@ -20,7 +20,6 @@ public class PlayerManager : MonoBehaviour
     public bool grounded;
     public LayerMask whatIsGround;
     public bool stoppedJumping;
-    public bool isDashing;
 
     /*the public transform is how you will detect whether we are touching the ground.
      * Add an empty game object as a child of your player and position it at your feet, where you touch the ground.
