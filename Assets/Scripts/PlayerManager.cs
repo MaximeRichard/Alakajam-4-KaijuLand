@@ -227,12 +227,14 @@ public class PlayerManager : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy" && !isTouched)
         {
+            if (collision.gameObject.GetComponent<EnemyBehaviour>().doesDamage)
+            {
 
-            isTouched = true;
+                isTouched = true;
 
-            // force is how forcefully we will push the player away from the enemy.
+                // force is how forcefully we will push the player away from the enemy.
                 // Calculate Angle Between the collision point and the player
-                Vector2 dir = collision.contacts[0].point -  new Vector2(transform.position.x, transform.position.y);
+                Vector2 dir = collision.contacts[0].point - new Vector2(transform.position.x, transform.position.y);
                 // We then get the opposite (-Vector3) and normalize it
                 dir = -dir.normalized;
                 // And finally we add force in the direction of dir and multiply it by force. 
@@ -241,6 +243,7 @@ public class PlayerManager : MonoBehaviour
 
 
                 TakeDamage();
+            }
         }
     }
 
