@@ -197,22 +197,22 @@ public class PlayerManager : MonoBehaviour
 
     void TakeDamage()
     {
-        life--;
-        if (life > 0)
-        {
-            animator.SetTrigger("Hurt");
-            playerRendererColor.a = 0.5f;
-            playerRenderer.material.color = playerRendererColor;
-            StartCoroutine(InvincibilityCooldown());
-        }
-        //TODO Implement invincibility cooldown
-        else
-        {
-            //TODO Trigger Death Animation and end game
-            animator.SetTrigger("Hurt");
-            animator.SetBool("Dead", true);
-            Debug.Log("Dead");
-        }
+        //life--;
+        //if (life > 0)
+        //{
+        //    animator.SetTrigger("Hurt");
+        //    playerRendererColor.a = 0.5f;
+        //    playerRenderer.material.color = playerRendererColor;
+        StartCoroutine(InvincibilityCooldown());
+        //}
+        ////TODO Implement invincibility cooldown
+        //else
+        //{
+        //    //TODO Trigger Death Animation and end game
+        //    animator.SetTrigger("Hurt");
+        //    animator.SetBool("Dead", true);
+        //    Debug.Log("Dead");
+        //}
     }
 
     IEnumerator InvincibilityCooldown()
