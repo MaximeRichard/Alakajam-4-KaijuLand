@@ -38,6 +38,8 @@ public class GameManager : MonoBehaviour
 
     public static GameManager Instance { get; internal set; }
     GameObject lastEnqued;
+    private int patternsToPass;
+    public GameObject endPattern;
 
     private void Awake()
     {
@@ -48,6 +50,7 @@ public class GameManager : MonoBehaviour
 
     public void Start()
     {
+        patternsToPass = patternsBeforeEnd;
         SpawnPlayer();
     }
 
@@ -75,6 +78,14 @@ public class GameManager : MonoBehaviour
 
     }
 
+    private void InstatiateLastPattern()
+    {
+        GameObject go = Instantiate(endPattern);
+        go.transform.position = lastEnqued.transform.position - Vector3.up * 20;
+        spawnedPatterns.Enqueue(go.GetComponent<TemplateManager>());
+        lastEnqued = go;
+    }
+
     internal void OnTemplateEnd(TemplateManager templateManager)
     {
         Destroy(spawnedPatterns.Dequeue().gameObject);
@@ -82,8 +93,19 @@ public class GameManager : MonoBehaviour
 
     internal void OnTemplateStart(TemplateManager templateManager)
     {
-        InstantiateRandomPattern();
+        if(patternsToPass > 0)
+        {
+            InstantiateRandomPattern();
+            patternsToPass--;
+        }
+        else
+        {
+            InstatiateLastPattern();
+        }
+        
     }
+
+   
 
     private void LateUpdate()
     {
@@ -94,6 +116,7 @@ public class GameManager : MonoBehaviour
             currentDistTravelled -= distThisFrame;
         }
 
+        powerValue.text = playerMgr.CurrentPower.ToString();
         advancement.value = (origin.position.y - playerMgr.transform.position.y) / (patternsBeforeEnd * 20f);
 
     }
