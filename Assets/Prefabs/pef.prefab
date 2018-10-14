@@ -549,7 +549,7 @@ Transform:
   m_GameObject: {fileID: 1434391883018146}
   m_LocalRotation: {x: -0.70474917, y: 0.70474917, z: 0.057694405, w: 0.057694405}
   m_LocalPosition: {x: -0, y: 0.3282655, z: -0.07279234}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_Children:
   - {fileID: 4189916748422304}
   - {fileID: 4097451169960718}
@@ -787,7 +787,7 @@ Transform:
   m_GameObject: {fileID: 1187335090446522}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0.65934944, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_Children: []
   m_Father: {fileID: 4788377409328698}
   m_RootOrder: 1
@@ -896,7 +896,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1147261247580534}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -4.92, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 4824432788890438}
@@ -1041,7 +1041,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 1
-  m_Mass: 0.5475993
+  m_Mass: 0.41853875
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 3.5
@@ -1062,8 +1062,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.93}
-  m_Size: {x: 1, y: 1.67}
+  m_Offset: {x: 0, y: 0.69}
+  m_Size: {x: 1, y: 1.46}
   m_Direction: 1
 --- !u!95 &95282483341696516
 Animator:
@@ -1111,6 +1111,8 @@ MonoBehaviour:
   basePowerRate: 1
   rotationTreshold: 0.01
   playerRenderer: {fileID: 137026337927453886}
+  gravityMultiply: 1.2
+  maxVelocity: 100
   currentPower: 0
 --- !u!137 &137026337927453886
 SkinnedMeshRenderer:
