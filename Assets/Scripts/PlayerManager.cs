@@ -41,6 +41,8 @@ public class PlayerManager : MonoBehaviour
     public float gravityMultiply = 1.2f;
     public float maxVelocity = 100f;
     public bool isDashing;
+    public TrailRenderer trail;
+
     private Rigidbody2D rb;
     private bool isTouched, isFacingRight;
     private Color playerRendererColor;
@@ -118,6 +120,7 @@ public class PlayerManager : MonoBehaviour
             rb.gravityScale = cachedGravityScale * gravityMultiply;
             isDashing = true;
             animator.SetBool("Dash", true);
+            if (!trail.emitting) trail.emitting = true;
         }
         else if (Input.GetKeyUp(KeyCode.Space))
         {
@@ -125,6 +128,7 @@ public class PlayerManager : MonoBehaviour
             chargeTimeCounter = 0;
             isDashing = false;
             animator.SetBool("Dash", false);
+            trail.emitting = false;
         }
         rb.velocity = Vector2.ClampMagnitude(rb.velocity, maxVelocity);
     }
