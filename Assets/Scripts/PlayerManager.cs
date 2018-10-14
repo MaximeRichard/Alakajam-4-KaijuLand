@@ -3,7 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerManager : MonoBehaviour {
+public class PlayerManager : MonoBehaviour
+{
 
     //****** Jump Parameters ******//
     /*these floats are the force you use to jump, the max time you want your jump to be allowed to happen,
@@ -14,10 +15,12 @@ public class PlayerManager : MonoBehaviour {
     /*this bool is to tell us whether you are on the ground or not
      * the layermask lets you select a layer to be ground; you will need to create a layer named ground(or whatever you like) and assign your
      * ground objects to this layer.
-     * The stoppedJumping bool lets us track when the player stops jumping.*/
+     * The stoppedJumping bool lets us track when the player stops jumping.
+     * isDashing indicate if the player is currently going down violently*/
     public bool grounded;
     public LayerMask whatIsGround;
     public bool stoppedJumping;
+    public bool isDashing;
 
     /*the public transform is how you will detect whether we are touching the ground.
      * Add an empty game object as a child of your player and position it at your feet, where you touch the ground.
@@ -40,7 +43,7 @@ public class PlayerManager : MonoBehaviour {
     public float maxVelocity = 100f;
 
     private Rigidbody2D rb;
-    private bool isTouched,isFacingRight;
+    private bool isTouched, isFacingRight;
     private Color playerRendererColor;
     private float chargeTimeCounter;
     private float cachedGravityScale;
@@ -113,10 +116,13 @@ public class PlayerManager : MonoBehaviour {
         if (Input.GetKey(KeyCode.Space))
         {
             rb.gravityScale = cachedGravityScale * gravityMultiply;
+            isDashing = true;
         }
-        else if (Input.GetKeyUp(KeyCode.Space)) {
+        else if (Input.GetKeyUp(KeyCode.Space))
+        {
             rb.gravityScale = cachedGravityScale;
             chargeTimeCounter = 0;
+            isDashing = false;
         }
         rb.velocity = Vector2.ClampMagnitude(rb.velocity, maxVelocity);
     }
@@ -127,7 +133,7 @@ public class PlayerManager : MonoBehaviour {
         //***************Input Movement Left Right****************//
 
         float moveHorizontal = Input.GetAxis("Horizontal");
-        
+
         if (moveHorizontal > 0 && !isFacingRight)
         {
             FlipCharacter(true);
@@ -156,18 +162,19 @@ public class PlayerManager : MonoBehaviour {
         if (Input.GetKey(KeyCode.Space))
         {
             chargeTimeCounter += Time.deltaTime;
-            if(chargeTimeCounter > timeToCharge)
+            if (chargeTimeCounter > timeToCharge)
             {
                 currentPower += basePowerRate;
             }
+            isDashing = true;
         }
 
-            //if we are grounded...
-            if (grounded)
+        //if we are grounded...
+        if (grounded)
         {
             //the jumpcounter is whatever we set jumptime to in the editor.
             chargeTimeCounter = 0f;
-            
+            isDashing = false;
         }
         animator.SetBool("Grounded", grounded);
     }
@@ -213,7 +220,7 @@ public class PlayerManager : MonoBehaviour {
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.tag == "Enemy" && !isTouched)
+        if (collision.gameObject.tag == "Enemy" && !isTouched)
         {
             isTouched = true;
             TakeDamage();
@@ -222,7 +229,6 @@ public class PlayerManager : MonoBehaviour {
 
     public void AddPower(int power)
     {
-
         currentPower += power;
     }
 }
