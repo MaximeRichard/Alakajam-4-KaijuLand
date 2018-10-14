@@ -41,14 +41,14 @@ public class PlayerManager : MonoBehaviour
     public float gravityMultiply = 1.2f;
     public float maxVelocity = 100f;
     public bool isDashing;
-    public TrailRenderer trail;
-
     private Rigidbody2D rb;
     private bool isTouched, isFacingRight;
     private Color playerRendererColor;
     private float chargeTimeCounter;
     private float cachedGravityScale;
     private Animator animator;
+
+    public TrailRenderer trail;
 
     [SerializeField]
     private int currentPower;
@@ -117,18 +117,18 @@ public class PlayerManager : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Space) && !grounded)
         {
+            if (!trail.emitting) trail.emitting = true;
             rb.gravityScale = cachedGravityScale * gravityMultiply;
             isDashing = true;
             animator.SetBool("Dash", true);
-            if (!trail.emitting) trail.emitting = true;
         }
         else if (Input.GetKeyUp(KeyCode.Space))
         {
+            trail.emitting = false;
             rb.gravityScale = cachedGravityScale;
             chargeTimeCounter = 0;
             isDashing = false;
             animator.SetBool("Dash", false);
-            trail.emitting = false;
         }
         rb.velocity = Vector2.ClampMagnitude(rb.velocity, maxVelocity);
     }
@@ -178,6 +178,7 @@ public class PlayerManager : MonoBehaviour
         //if we are grounded...
         if (grounded)
         {
+            if (trail.emitting) trail.emitting = false;
             //the jumpcounter is whatever we set jumptime to in the editor.
             chargeTimeCounter = 0f;
             isDashing = false;
