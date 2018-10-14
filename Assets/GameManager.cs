@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -13,7 +14,17 @@ public class GameManager : MonoBehaviour
     public CameraFollow2D cameraTracker;
     public Transform origin;
 
+    public int patternsBeforeEnd = 15;
+    public int powerObjective;
+
+    public Text powerValue;
+    public Slider advancement;
+
+
     private Rigidbody2D playerRigid;
+    private PlayerManager playerMgr;
+
+    
 
     public float distToSpawnNext = 2f;
     public float distBeforeDestroy = 10f;
@@ -21,10 +32,14 @@ public class GameManager : MonoBehaviour
     private float currentDistToSpawnNext;
     public float scrollFactor = 1f;
 
+
+
     public float playerVelocity;
 
     public static GameManager Instance { get; internal set; }
     GameObject lastEnqued;
+    private int patternsToPass;
+    public GameObject endPattern;
 
     private void Awake()
     {
@@ -35,6 +50,7 @@ public class GameManager : MonoBehaviour
 
     public void Start()
     {
+        patternsToPass = patternsBeforeEnd;
         SpawnPlayer();
     }
 
@@ -45,6 +61,7 @@ public class GameManager : MonoBehaviour
         sPoint.transform.position = origin.position;
         GameObject player = Instantiate(playerPrefab);
         playerRigid = player.GetComponent<Rigidbody2D>();
+        playerMgr = player.GetComponent<PlayerManager>();
         player.transform.position = GameObject.FindGameObjectWithTag("PlayerSpawnPoint").transform.position;
         cameraTracker.target = player.transform;
         spawnedPatterns.Enqueue(sPoint.GetComponent<TemplateManager>());
@@ -61,6 +78,14 @@ public class GameManager : MonoBehaviour
 
     }
 
+    private void InstatiateLastPattern()
+    {
+        GameObject go = Instantiate(endPattern);
+        go.transform.position = lastEnqued.transform.position - Vector3.up * 20;
+        spawnedPatterns.Enqueue(go.GetComponent<TemplateManager>());
+        lastEnqued = go;
+    }
+
     internal void OnTemplateEnd(TemplateManager templateManager)
     {
         Destroy(spawnedPatterns.Dequeue().gameObject);
@@ -68,8 +93,19 @@ public class GameManager : MonoBehaviour
 
     internal void OnTemplateStart(TemplateManager templateManager)
     {
-        InstantiateRandomPattern();
+        if(patternsToPass > 0)
+        {
+            InstantiateRandomPattern();
+            patternsToPass--;
+        }
+        else
+        {
+            InstatiateLastPattern();
+        }
+        
     }
+
+   
 
     private void LateUpdate()
     {
@@ -79,6 +115,9 @@ public class GameManager : MonoBehaviour
             float distThisFrame = playerRigid.velocity.y * Time.deltaTime;
             currentDistTravelled -= distThisFrame;
         }
+
+        powerValue.text = playerMgr.CurrentPower.ToString();
+        advancement.value = (origin.position.y - playerMgr.transform.position.y) / (patternsBeforeEnd * 20f);
 
     }
 
