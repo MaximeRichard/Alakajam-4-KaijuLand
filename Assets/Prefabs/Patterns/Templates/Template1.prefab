@@ -7994,7 +7994,7 @@ PolygonCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.6, y: 1}
+  m_Offset: {x: 0.6, y: 1.1}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -8006,9 +8006,10 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.59878314, y: 0.07130873}
-      - {x: -1.16, y: -0.22486341}
-      - {x: -0.05, y: -0.22439921}
+    - - {x: -1.5511842, y: -0.074505925}
+      - {x: -1.8071309, y: -0.46315354}
+      - {x: 0.60078585, y: -0.45808756}
+      - {x: 0.41, y: 0.07130873}
 --- !u!60 &60338166371753394
 PolygonCollider2D:
   m_ObjectHideFlags: 1
@@ -8331,7 +8332,7 @@ PolygonCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.6, y: 1}
+  m_Offset: {x: 0.6, y: 1.1}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -8343,9 +8344,10 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.59878314, y: 0.07130873}
-      - {x: -1.16, y: -0.22486341}
-      - {x: -0.05, y: -0.22439921}
+    - - {x: -1.5511842, y: -0.074505925}
+      - {x: -1.8071309, y: -0.46315354}
+      - {x: 0.60078585, y: -0.45808756}
+      - {x: 0.41, y: 0.07130873}
 --- !u!60 &60587076992577742
 PolygonCollider2D:
   m_ObjectHideFlags: 1
@@ -8392,7 +8394,7 @@ PolygonCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.6, y: 1}
+  m_Offset: {x: 0.6, y: 1.1}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -8404,9 +8406,10 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.59878314, y: 0.07130873}
-      - {x: -1.16, y: -0.22486341}
-      - {x: -0.05, y: -0.22439921}
+    - - {x: -1.5511842, y: -0.074505925}
+      - {x: -1.8071309, y: -0.46315354}
+      - {x: 0.60078585, y: -0.45808756}
+      - {x: 0.41, y: 0.07130873}
 --- !u!60 &60699803183967124
 PolygonCollider2D:
   m_ObjectHideFlags: 1
